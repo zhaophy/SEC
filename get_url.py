@@ -43,6 +43,11 @@ def get_imgs(list):#重新组合图片链接，使列表中的图片链接均为
 
     return new_list
 
+
+
+
+
+url = 'https://www.smec-cn.com/cn/'
 def get_html(url):
     page = urllib.urlopen(url)
     html = page.read()
@@ -56,21 +61,17 @@ def get_img(html):
     print reg
     print imgre
     print imglist
-
+    imglists = get_imgs(imglist)
     imgurls = []
-    for i in imglist:
+    x = 0
+    for imgurl in imglists:
+        print imgurl
 
-        if 'http' not in i:
-            imgurl = '{}{}'.format(url,i)
-            imgurls.append(imgurl)
-    return imgurls
-    #x = 0
-    #for imgurl in imglist:
-     #   urllib.urlretrieve(imgurl, '%s.jpg' % x)
-      #  x += 1
+        urllib.urlretrieve(imgurl, '%s.jpg' % x)
+        x += 1
 
 
-
+get_img(html)
 
 
 
